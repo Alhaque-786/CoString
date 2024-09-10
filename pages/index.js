@@ -1,20 +1,5 @@
 import Header from "@/components/Header";
-
-const ArrowIcon = ({ direction }) => {
-  const transform = direction === "up" ? "rotate(180deg)" : "rotate(0deg)";
-  return (
-    <svg
-      width="16"
-      height="16"
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      style={{ transform }}
-    >
-      <path d="M12 8l-4 4h8l-4-4z" fill="#000" />
-    </svg>
-  );
-};
+import { AiOutlineArrowUp, AiOutlineArrowDown, AiOutlineFilter } from "react-icons/ai";
 
 export default function Swap() {
   return (
@@ -22,16 +7,21 @@ export default function Swap() {
       <Header />
       <div className="relative flex justify-center items-center py-20">
         <div className="bg-white rounded-lg shadow-lg p-8 max-w-lg w-full relative">
-          <h2 className="block text-black mb-2 font-bold">Swap</h2>
+          <div className="flex justify-between items-center mb-2">
+            <h2 className="block text-black font-bold">Swap</h2>
+            {/* Filter Icon */}
+            <AiOutlineFilter className="text-black cursor-pointer" />
+          </div>
 
           {/* Container for sections and arrows */}
           <div className="relative">
+            {/* "You Sell" Section */}
             <div className="mb-4 bg-gray-200 p-4 rounded-lg">
               <label className="block text-black">You Sell</label>
-              <div className="flex items-center space-x-2 bg-gray-100 rounded-lg px-4 py-2">
+              <div className="flex items-center space-x-2 bg-gray-200 rounded-lg px-4 py-2">
                 <input
                   type="number"
-                  className="flex-grow text-xl outline-none border-none bg-transparent"
+                  className="flex-grow text-2xl -ml-3 outline-none border-none bg-gray-200"
                   placeholder="0.0"
                 />
                 <span className="text-black">ETH</span>
@@ -51,21 +41,21 @@ export default function Swap() {
               </div>
             </div>
 
-            {/* Arrow and line between sections */}
-            <div className="absolute inset-x-0 top-1/2 transform -translate-y-1/2 flex justify-center items-center">
-              <div className="w-0.5 h-12 bg-gray-400" /> {/* Line */}
-              <div className="flex flex-col items-center ml-2">
-                <ArrowIcon direction="up" />
-                <ArrowIcon direction="down" />
+            {/* Arrow between sections */}
+            <div className="absolute inset-x-0 top-1/2 -mt-2 transform -translate-y-1/2 flex justify-center items-center">
+              <div className="flex flex-col items-center">
+                <AiOutlineArrowUp className="text-gray-400" />
+                <AiOutlineArrowDown className="text-gray-400" />
               </div>
             </div>
 
+            {/* "You Receive" Section */}
             <div className="mb-4 bg-gray-200 p-4 rounded-lg mt-12">
               <label className="block text-black">You Receive</label>
-              <div className="flex items-center space-x-2 bg-gray-100 rounded-lg px-4 py-2">
+              <div className="flex items-center space-x-2 bg-gray-200 rounded-lg px-4 py-2">
                 <input
                   type="number"
-                  className="flex-grow text-xl outline-none border-none bg-transparent"
+                  className="flex-grow text-2xl -ml-3 outline-none border-none bg-gray-200"
                   placeholder="0.0"
                 />
                 <span className="text-black">MATIC</span>
